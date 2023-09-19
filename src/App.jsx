@@ -22,7 +22,8 @@ function App() {
   RunTryAgain(x);
   return (
     <Routes>
-      <Route path="/" element={<Home />}>
+      <Route path="/">
+        <Route index element={<Home />} />
         <Route path="/error" element={<Error />} />
       </Route>
     </Routes>
