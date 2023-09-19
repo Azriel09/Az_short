@@ -46,12 +46,12 @@ export default function UrlInput() {
     setInputURLError(false);
 
     try {
-      axios
-        .post("http://192.168.137.1:8800/submit", inputURL)
-        .then((response) => {
-          console.log(response.data);
-          setOutputURL(response.data);
-        });
+      fetch("http://192.168.137.1:8800/submit", inputURL, {
+        method: "POST",
+      }).then((response) => {
+        console.log(response.data);
+        setOutputURL(response.data);
+      });
     } catch (err) {
       console.log(err);
     }
