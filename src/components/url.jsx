@@ -35,7 +35,7 @@ export default function UrlInput() {
     setInputURL((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Checks if input is a URL or Not
     if (!validator.isURL(inputURL.link)) {
@@ -46,12 +46,12 @@ export default function UrlInput() {
     setInputURLError(false);
 
     try {
-      fetch("http://192.168.137.1:8800/submit", inputURL, {
-        method: "POST",
-      }).then((response) => {
-        console.log(response.data);
-        setOutputURL(response.data);
-      });
+      await axios
+        .post("http://192.168.137.1:8800/submit", inputURL)
+        .then((response) => {
+          console.log(response.data);
+          setOutputURL(response.data);
+        });
     } catch (err) {
       console.log(err);
     }
