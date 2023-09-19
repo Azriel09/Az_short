@@ -4,27 +4,14 @@ import "./App.css";
 import Home from "./page/home";
 import { Route, Routes } from "react-router-dom";
 import Error from "./page/error";
+import Nav from "./components/Navbar/nav";
 
 function App() {
-  let arr = 10;
-  let x = 1;
-  function RunTryAgain(i) {
-    if (i < arr) {
-      console.log(i);
-      i++;
-
-      RunTryAgain(i);
-    } else {
-      return;
-    }
-  }
-
-  RunTryAgain(x);
   return (
     <Routes>
-      <Route path="/">
+      <Route path="/" element={<Nav />}>
         <Route index element={<Home />} />
-        <Route path="/error" element={<Error />} />
+        <Route path="error" element={<Error />} />
       </Route>
     </Routes>
   );
