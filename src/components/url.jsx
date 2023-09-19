@@ -25,7 +25,7 @@ export default function UrlInput() {
     if (outputURL.length <= 5) {
       setOutputLabel("No URL generated yet");
     } else {
-      navigator.clipboard.writeText(outputLabel);
+      navigator.clipboard.writeText(outputURL);
       setOutputLabel("URL Copied");
     }
   };
@@ -35,21 +35,23 @@ export default function UrlInput() {
     setInputURL((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Checks if input is a URL or Not
-    // if (validator.isURL(inputURL)) {
-    //   console.log("A URL");
-    //   setInputURLError(false);
+    if (!validator.isURL(inputURL.link)) {
+      console.log("Not a URL");
+      setInputURLError(true);
+      return;
+    }
+    setInputURLError(false);
 
-    // } else {
-    //   console.log("Not a URL");
-    //   setInputURLError(true);
-    // }
-    const test = "this is a test";
     try {
-      await axios.post("http://192.168.137.1:8800/submit", inputURL);
-      console.log("success");
+      axios
+        .post("http://192.168.137.1:8800/submit", inputURL)
+        .then((response) => {
+          console.log(response.data);
+          setOutputURL(response.data);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -115,7 +117,7 @@ export default function UrlInput() {
           color: "white",
         }}
         className="url-output"
-        defaultValue={outputURL}
+        value={outputURL}
         InputLabelProps={{
           style: {
             color: "white",
