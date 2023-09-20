@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "./nav-styles.css";
 import { Button } from "@mui/material";
+import axios from "axios";
 export default function Nav() {
   const handleClick = async () => {
     try {
