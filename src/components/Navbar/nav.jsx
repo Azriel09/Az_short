@@ -1,6 +1,16 @@
 import { Link, Outlet } from "react-router-dom";
 import "./nav-styles.css";
+import { Button } from "@mui/material";
 export default function Nav() {
+  const handleClick = async () => {
+    try {
+      await axios.get("https://azshort.netlify.app/").then((response) => {
+        console.log(response);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="nav-container">
       <div className="nav-links-wrapper">
@@ -10,6 +20,7 @@ export default function Nav() {
         <Link to="/" className="nav-link">
           Home
         </Link>
+        <Button onClick={handleClick}>Test</Button>
       </div>
       <Outlet />
     </div>
