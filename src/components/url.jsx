@@ -47,7 +47,7 @@ export default function UrlInput() {
 
     try {
       await axios
-        .post("http://192.168.137.1:8800/submit", inputURL)
+        .post("https://azshort.netlify.app/submit", inputURL)
         .then((response) => {
           console.log(response.data);
           setOutputURL(response.data);
