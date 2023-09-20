@@ -5,6 +5,7 @@ import axios from "axios";
 const api = import.meta.env.VITE_API;
 export default function Nav() {
   const handleClick = async () => {
+    console.log(`${api}submit`);
     try {
       await axios.get(api).then((response) => {
         console.log(response);
