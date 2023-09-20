@@ -12,6 +12,7 @@ import validator from "validator";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Test from "./test";
 import axios from "axios";
+const api = import.meta.env.VITE_API;
 export default function UrlInput() {
   const [inputURL, setInputURL] = useState({
     link: "",
@@ -46,12 +47,10 @@ export default function UrlInput() {
     setInputURLError(false);
 
     try {
-      await axios
-        .post("https://azshort.netlify.app/submit", inputURL)
-        .then((response) => {
-          console.log(response.data);
-          setOutputURL(response.data);
-        });
+      await axios.post(`${api}submit`, inputURL).then((response) => {
+        console.log(response.data);
+        setOutputURL(response.data);
+      });
     } catch (err) {
       console.log(err);
     }
