@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import "./container.scss";
 export default function Wave() {
   return (
