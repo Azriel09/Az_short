@@ -1,5 +1,5 @@
 import Wave from "./wave";
-import UrlInput from "./url";
+import UrlInput from "./home/url";
 import "./container.scss";
 export default function Container() {
   return (
