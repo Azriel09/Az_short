@@ -16,15 +16,6 @@ export default function Nav() {
   };
   return (
     <div className="nav-container">
-      <div className="nav-links-wrapper">
-        <Link to="/error" className="nav-link">
-          Error
-        </Link>
-        <Link to="/" className="nav-link">
-          Home
-        </Link>
-        <Button onClick={handleClick}>Test</Button>
-      </div>
       <Outlet />
     </div>
   );

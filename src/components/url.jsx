@@ -46,14 +46,14 @@ export default function UrlInput() {
     }
     setInputURLError(false);
 
-    try {
-      await axios.post(`${api}submit`, inputURL).then((response) => {
-        console.log(response.data);
-        setOutputURL(response.data);
-      });
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   await axios.post(`${api}submit`, inputURL).then((response) => {
+    //     console.log(response.data);
+    //     setOutputURL(response.data);
+    //   });
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   return (

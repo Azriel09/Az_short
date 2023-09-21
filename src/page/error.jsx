@@ -1,3 +1,5 @@
+import ErrorContainer from "../components/error/error-container";
+
 export default function ErrorPage() {
-  return <h1>Error!</h1>;
+  return <ErrorContainer />;
 }
