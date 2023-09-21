@@ -10,7 +10,7 @@ import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
 import { useState } from "react";
 import validator from "validator";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import Test from "./test";
+
 import axios from "axios";
 const api = import.meta.env.VITE_API;
 export default function UrlInput() {
@@ -46,14 +46,14 @@ export default function UrlInput() {
     }
     setInputURLError(false);
 
-    // try {
-    //   await axios.post(`${api}submit`, inputURL).then((response) => {
-    //     console.log(response.data);
-    //     setOutputURL(response.data);
-    //   });
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      await axios.post(`${api}submit`, inputURL).then((response) => {
+        console.log(response.data);
+        setOutputURL(response.data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -66,7 +66,6 @@ export default function UrlInput() {
         alignItems: "center",
       }}
     >
-      <Test />
       <FormControl>
         <TextField
           variant="filled"
@@ -119,14 +118,15 @@ export default function UrlInput() {
         value={outputURL}
         InputLabelProps={{
           style: {
-            color: "white",
+            color: "black",
           },
         }}
+        color="primary"
         InputProps={{
           readOnly: true,
           endAdornment: (
             <InputAdornment position="end" sx={{ cursor: "pointer" }}>
-              <ContentCopyIcon onClick={copyUrl} sx={{ color: "white" }} />
+              <ContentCopyIcon onClick={copyUrl} sx={{ color: "black" }} />
             </InputAdornment>
           ),
         }}
