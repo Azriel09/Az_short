@@ -1,9 +1,14 @@
-# React + Vite
+# Process:
+## Submission
+- User submits a link
+- Validator checks if its a legitimate link format
+- If successful, the backend checks if the link has already been shortened before via MySQL query
+- If already exists, it will return the shortened link instead
+- If the link doesn't exist yet, it will generate a random 4-character string as a code and insert it into the MySQL table together with the link submitted by the user
+- If sucessful, backend will send a response that has the shortened link
+- The shortened link will show up in the site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# Az_short
+## Using the Shortened Link
+- Backend will check the params id of the shortened link
+- If it does not exist, backend will redirect the user to the error page
+- If sucessful, it will redirect the user to the destined link
