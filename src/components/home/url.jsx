@@ -4,6 +4,7 @@ import {
   Box,
   FormHelperText,
   FormControl,
+  useTheme,
 } from "@mui/material";
 import "./url.scss";
 import ArrowCircleUpIcon from "@mui/icons-material/ArrowCircleUp";
@@ -14,6 +15,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import axios from "axios";
 const api = import.meta.env.VITE_API;
 export default function UrlInput() {
+  const theme = useTheme();
   const [inputURL, setInputURL] = useState({
     link: "",
   });
@@ -66,7 +68,20 @@ export default function UrlInput() {
         alignItems: "center",
       }}
     >
-      <FormControl>
+      <FormControl
+        sx={{
+          width: "100%",
+          [theme.breakpoints.down("520")]: {
+            width: "90%",
+          },
+          [theme.breakpoints.down("420")]: {
+            width: "80%",
+          },
+          [theme.breakpoints.down("320")]: {
+            width: "70%",
+          },
+        }}
+      >
         <TextField
           variant="filled"
           label="Type/Paste URL here"
@@ -75,7 +90,6 @@ export default function UrlInput() {
           name="link"
           sx={{
             input: { color: "white", fontSize: "1.5em" },
-            width: "500px",
           }}
           InputLabelProps={{
             style: {
@@ -111,8 +125,17 @@ export default function UrlInput() {
         label={outputLabel}
         sx={{
           input: { color: "white", fontSize: "1.3em" },
-          width: "400px",
-          color: "white",
+
+          width: "100%",
+          [theme.breakpoints.down("520")]: {
+            width: "90%",
+          },
+          [theme.breakpoints.down("420")]: {
+            width: "80%",
+          },
+          [theme.breakpoints.down("320")]: {
+            width: "70%",
+          },
         }}
         className="url-output"
         value={outputURL}
