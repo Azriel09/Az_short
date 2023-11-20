@@ -40,6 +40,7 @@ export default function UrlInput() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     // Checks if input is a URL or Not
     if (!validator.isURL(inputURL.link)) {
       console.log("Not a URL");
@@ -47,14 +48,13 @@ export default function UrlInput() {
       return;
     }
     setInputURLError(false);
-
+    setOutputURL("Loading...");
     try {
       await axios.post(`${api}submit`, inputURL).then((response) => {
-        console.log(response.data);
         setOutputURL(response.data);
       });
     } catch (err) {
-      console.log(err);
+      setOutputURL("Error");
     }
   };
 
